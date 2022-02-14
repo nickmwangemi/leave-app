@@ -37,7 +37,7 @@
                 <td>{{ leave_request.start_date }}</td>
                 <td>{{ leave_request.end_date }}</td>
                 <td>{{ leave_request.type_of_leave }}</td>
-                <td>{{ leave_request.end_date|timeuntil:leave_request.start_date }}</td>
+                <td>{{ leave_request.count_workdays }}</td>
             </tr>
             {% endfor %}
         </table>

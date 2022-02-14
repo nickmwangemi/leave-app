@@ -1,5 +1,6 @@
 import datetime
 
+import numpy as np
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.urls import reverse
@@ -34,3 +35,7 @@ class LeaveRequest(models.Model):
 
     def get_absolute_url(self):
         return reverse("leave:leave_request_detail", args=[str(self.id)])
+
+    @property
+    def count_workdays(self):
+        return np.busday_count(self.start_date, self.end_date)
