@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+    {% for message in messages %}
+        <div class="text-center alert alert-{{ message.tags }}">
+            {{ message|safe }}
+        </div>
+    {% endfor %}
+    {% endif %}
+
+    <a href="{% url 'leave:leave_request_list' %}">Back to Leave Request List</a>
+    <h1>Edit Leave Request</h1>
+    <a href="{% url 'leave:leave_request_delete' object.pk %}">Delete leave request</a>
+    
+    <form action="{% url 'leave:leave_request_edit' object.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+{% endblock content %}

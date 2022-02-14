@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+    {% for message in messages %}
+        <div class="text-center alert alert-{{ message.tags }}">
+            {{ message|safe }}
+        </div>
+    {% endfor %}
+    {% endif %}
+
+    <a href="{% url 'leave:leave_request_list' %}">Back to Leave Requests List</a>
+    <h2>Leave Request Detail</h2>
+        <table>
+            <th>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Type of Leave</th>
+                    <th>Duration (in days)</th>
+                </tr>
+            </th>
+            <tr>
+                <td>{{ object.id }}</td>
+                <td>{{ object.name }} </a></td>
+                <td>{{ object.start_date }}</td>
+                <td>{{ object.end_date }}</td>
+                <td>{{ object.type_of_leave }}</td>
+                <td>{{ object.end_date|timeuntil:object.start_date }}</td>
+            </tr>
+        </table>
+
+{% endblock content %}

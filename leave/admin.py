@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import LeaveRequest
+
+
+class LeaveRequestAdmin(admin.ModelAdmin):
+    list_display = ["name", "start_date", "end_date", "type_of_leave"]
+
+
+admin.site.register(LeaveRequest, LeaveRequestAdmin)
