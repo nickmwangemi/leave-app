@@ -9,6 +9,7 @@ distlib==0.3.4
 Django==3.2
 executing==0.8.2
 filelock==3.4.2
+gunicorn==20.1.0
 identify==2.4.10
 ipython==8.0.1
 isort==5.10.1
