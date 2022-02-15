@@ -40,3 +40,6 @@ Before setting up, please make sure that you have Python3.6+ installed and runni
 ```
 
 The server should be available at [http://127.0.0.1:8000](http://127.0.0.1:8000), while the admin panel will be at [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin)
+
+
+A hosted instance of this project is available at [https://leave-app-by-nick.herokuapp.com/](https://leave-app-by-nick.herokuapp.com/)
