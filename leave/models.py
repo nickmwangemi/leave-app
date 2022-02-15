@@ -1,6 +1,5 @@
 import datetime
-from distutils.command.check import check
-from unicodedata import name
+
 
 import numpy as np
 from django.core.exceptions import ValidationError
@@ -45,6 +44,25 @@ class LeaveRequest(models.Model):
     def get_absolute_url(self):
         return reverse("leave:leave_request_detail", args=[str(self.id)])
 
+    # @property
+    # def count_workdays(self):
+    #     return np.busday_count(self.start_date, self.end_date)
+
     @property
     def count_workdays(self):
-        return np.busday_count(self.start_date, self.end_date)
+        start_date = self.start_date
+        end_date = self.end_date
+
+        # Generate the dates that fall in between
+        dates = set()
+        for index in range((end_date - start_date).days):
+            dates.add(start_date + datetime.timedelta(index + 1))
+
+        # Sum the number of business days
+        number_of_business_days = 0
+        for day in dates:
+            if day.weekday() < 5:
+                number_of_business_days += 1
+        return number_of_business_days
+
+
